@@ -29,7 +29,7 @@ const Logout = () => {
 
   return (
     <div className='container' >
-      {loginUser > 0 ? (
+      {loginUser ? (
         <>
           <h1>Welcome <span className='user_name'>{loginUser.name}</span> </h1>
           <button className='logout_button' onClick={handleLogout} >Logout</button>

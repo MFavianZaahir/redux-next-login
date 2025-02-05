@@ -20,6 +20,11 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 // Membuat store Redux dengan persistedReducer, yang berarti state disimpan dan dapat dipulihkan dari localStorage.
 export const store = configureStore({
   reducer: persistedReducer,  // Menggunakan persistedReducer di store.
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,  // Mengabaikan cek serialisasi untuk menghindari kesalahan.
+    }),
+    devTools: process.env.NODE_ENV !== "production",  // Mengaktifkan Redux DevTools di lingkungan pengembangan.
 });
 
 // Membuat persistor untuk mengelola proses penyimpanan dan pemulihan state ke/dari storage.
